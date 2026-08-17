@@ -1,0 +1,73 @@
+{
+  "name": "@debbl/with-env",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.34.5",
+  "description": "Load .env files the Next.js way, then run any command",
+  "author": "Brendan Dash <me@aiwan.run> (https://aiwan.run)",
+  "license": "MIT",
+  "homepage": "https://github.com/Debbl/with-env#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Debbl/with-env.git"
+  },
+  "bugs": "https://github.com/Debbl/with-env/issues",
+  "keywords": [
+    "env",
+    "dotenv",
+    "next",
+    "turbo",
+    "turborepo",
+    "monorepo",
+    "cli"
+  ],
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./cli": "./dist/cli.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.mts",
+  "bin": {
+    "with-env": "./dist/cli.mjs"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "node ./src/cli.ts --help",
+    "build": "tsdown",
+    "test": "vitest",
+    "release": "bumpp",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@next/env": "^16.3.0",
+    "cross-spawn": "^7.0.6"
+  },
+  "devDependencies": {
+    "@debbl/eslint-config": "^3.16.0",
+    "@types/cross-spawn": "^6.0.6",
+    "@types/node": "^25.5.0",
+    "bumpp": "^12.2.1",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "lint-staged": "^16.4.0",
+    "simple-git-hooks": "^2.13.1",
+    "tsdown": "^0.22.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
